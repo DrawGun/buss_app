@@ -4,7 +4,9 @@ describe City do
   subject { create(:city) }
 
   context "validations" do
+    it { should have_many(:stations) }
     it { should validate_presence_of(:name) }
+    it { should validate_uniqueness_of(:name) }
 
     it "skips whitespaces" do
       city_name = "Киев"

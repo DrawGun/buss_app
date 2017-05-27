@@ -1,7 +1,5 @@
 class City < ApplicationRecord
-  validates :name, presence: true
+  include CleanNameWithValidation
 
-  def name=(value)
-    self[:name] = value.to_s.strip
-  end
+  has_many :stations, inverse_of: :city
 end
