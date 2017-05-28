@@ -14,7 +14,7 @@ class Trip < ApplicationRecord
     :carrier, :currency, presence: true
 
   validates :total_cost, numericality: { greater_than_or_equal_to: 0 }, presence: true
-  validate :check_trip_dates, on: :create
+  validate :check_trip_dates
 
   def start_time
     start_date.strftime("%H:%M")

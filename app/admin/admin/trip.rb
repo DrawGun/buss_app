@@ -39,12 +39,12 @@ ActiveAdmin.register Trip, :namespace => :admin do
     f.inputs "Основное" do
       f.input :start_city, as: :select, collection: City.available_collection, input_html: { class: "select2" }
       f.input :station_begin, as: :select, collection: Station.available_collection, input_html: { class: "select2" }
-      f.input :start_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.start_date.strftime("%d.%m.%Y") }
+      f.input :start_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.start_date.strftime("%d.%m.%Y"), id: "start_date" }
       f.input :start_time, as: :time_picker
 
       f.input :end_city, as: :select, collection: City.available_collection, input_html: { class: "select2" }
       f.input :station_end, as: :select, collection: Station.available_collection, input_html: { class: "select2" }
-      f.input :end_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.start_date.strftime("%d.%m.%Y") }
+      f.input :end_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.end_date.strftime("%d.%m.%Y"), id: "end_date" }
       f.input :end_time, as: :time_picker
 
       f.input :carrier, as: :select, collection: Carrier.available_collection, input_html: { class: "select2" }
@@ -63,6 +63,6 @@ ActiveAdmin.register Trip, :namespace => :admin do
   filter :station_end_id, as: :select, collection: -> { Station.available_collection(name_only: true) }, input_html: { class: "select2" }
   filter :end_date
 
-  permit_params :start_city, :station_begin, :start_date, :start_time,
-    :end_city, :station_end, :end_date, :end_time
+  permit_params :start_city_id, :station_begin_id, :start_date, :start_time,
+    :end_city_id, :station_end_id, :end_date, :end_time, :carrier_id, :total_cost, :currency_id
 end
