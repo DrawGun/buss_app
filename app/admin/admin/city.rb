@@ -20,7 +20,8 @@ ActiveAdmin.register City, :namespace => :admin do
   end
 
   filter :id
-  filter :name
+  filter :name, as: :select, collection: -> { City.available_collection }, input_html: { class: 'select2' }
+
 
   permit_params :name
 end

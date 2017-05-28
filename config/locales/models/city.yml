@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      city:
+        zero: Городов
+        one: Город
+        few: Города
+        many: Городов
+        other: Города
+
+    attributes:
+      city:
+        name: Название

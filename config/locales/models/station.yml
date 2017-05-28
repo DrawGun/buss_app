@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      station:
+        zero: Станций
+        one: Станция
+        few: Станции
+        many: Станций
+        other: Станции
+
+    attributes:
+      station:
+        name: Название

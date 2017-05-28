@@ -64,3 +64,8 @@ gem "activeadmin"
 gem "devise"
 gem "cancan"
 gem "will_paginate", "~> 3.1.0"
+gem "translit"
+
+source "http://rails-assets.org" do
+  gem "rails-assets-select2"
+end
