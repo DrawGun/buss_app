@@ -1,0 +1,24 @@
+ru:
+  activerecord:
+    models:
+      trip:
+        zero: Поездок
+        one: Поездка
+        few: Поездки
+        many: Поездок
+        other: Поездки
+
+    attributes:
+      trip:
+        start_city: Город начала поездки
+        end_city: Город окончания поездки
+        station_begin: Станция отправления
+        station_end: Станция прибытия
+        carrier: Перевозчик
+        total_cost: Стоимость
+        currency: Валюта
+
+    errors:
+      trip:
+        start_date_greater_than_end_date: Дата начала поездки не может быть позже даты конца поездки
+        start_date_equal_end_date: Дата начала поездки не может быть разва дате конца поездки

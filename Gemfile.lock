@@ -114,6 +114,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    just-time-picker (0.0.2)
+      activeadmin (>= 0.4.4)
+      formtastic (>= 2.0.0)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -285,6 +288,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.5)
   jquery-rails
+  just-time-picker
   listen (~> 3.0.5)
   pry
   pry-byebug

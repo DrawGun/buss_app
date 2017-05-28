@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      carrier:
+        zero: Перевозчиков
+        one: Перевозчик
+        few: Перевозчика
+        many: Перевозчиков
+        other: Перевозчики
+
+    attributes:
+      carrier:
+        name: Название

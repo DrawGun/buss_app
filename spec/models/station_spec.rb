@@ -5,8 +5,11 @@ describe Station do
     create(:station)
   end
 
-  context "validations" do
+  context "assotiations" do
     it { should belong_to(:city) }
+  end
+
+  context "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
     it { should validate_presence_of(:city) }

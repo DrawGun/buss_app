@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :station do
     city
-    name "Москва (Теплый Стан)"
+    sequence(:name) { |n| "Станция - #{n}" }
   end
 end

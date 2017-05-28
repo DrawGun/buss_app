@@ -1,4 +1,4 @@
-ActiveAdmin.register City, :namespace => :admin do
+ActiveAdmin.register Currency, :namespace => :admin do
 
   actions :all, except: [:show, :destroy]
 
@@ -20,7 +20,7 @@ ActiveAdmin.register City, :namespace => :admin do
   end
 
   filter :id
-  filter :name, as: :select, collection: -> { City.available_collection(name_only: true) }, input_html: { class: "select2" }
+  filter :name, as: :select, collection: -> { Currency.available_collection(name_only: true) }, input_html: { class: "select2" }
 
 
   permit_params :name

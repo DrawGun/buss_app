@@ -15,16 +15,16 @@ ActiveAdmin.register Station, :namespace => :admin do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs 'Основное' do
+    f.inputs "Основное" do
       f.input :name
-      f.input :city_id, as: :select, collection: City.available_collection, input_html: { class: 'select2' }
+      f.input :city_id, as: :select, collection: City.available_collection, input_html: { class: "select2" }
     end
 
     f.actions
   end
 
   filter :id
-  filter :name, as: :select, collection: -> { Station.available_collection }, input_html: { class: 'select2' }
+  filter :name, as: :select, collection: -> { Station.available_collection(name_only: true) }, input_html: { class: "select2" }
 
   controller do
     before_action :update_places_scopes, only: :index

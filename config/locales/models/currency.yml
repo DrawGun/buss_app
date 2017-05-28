@@ -1,0 +1,13 @@
+ru:
+  activerecord:
+    models:
+      currency:
+        zero: Названий валюты
+        one: Название валюты
+        few: Названия валюты
+        many: Названий валюты
+        other: Названия валюты
+
+    attributes:
+      currency:
+        name: Название

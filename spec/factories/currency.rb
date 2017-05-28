@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :currency do
-    name "RUB"
+    sequence(:name) { |n| "Валюта - #{n}" }
   end
 end

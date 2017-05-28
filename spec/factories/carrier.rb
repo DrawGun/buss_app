@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :carrier do
-    name "Физическое лицо - предприниматель Кочев Владимир Ильич"
+    sequence(:name) { |n| "Физическое лицо - #{n}" }
   end
 end

@@ -3,8 +3,11 @@ require "rails_helper"
 describe City do
   subject { create(:city) }
 
-  context "validations" do
+  context "assotiations" do
     it { should have_many(:stations) }
+  end
+
+  context "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
 

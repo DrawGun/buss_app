@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527223231) do
+ActiveRecord::Schema.define(version: 20170528140020) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -63,10 +63,30 @@ ActiveRecord::Schema.define(version: 20170527223231) do
 
   create_table "stations", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "city_id"
+    t.integer "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_stations_on_city_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "start_city_id", null: false
+    t.integer "station_begin_id", null: false
+    t.datetime "start_date", null: false
+    t.integer "end_city_id", null: false
+    t.integer "station_end_id", null: false
+    t.datetime "end_date", null: false
+    t.integer "carrier_id", null: false
+    t.decimal "total_cost", precision: 10, scale: 2, default: "0.0", null: false
+    t.integer "currency_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carrier_id"], name: "index_trips_on_carrier_id"
+    t.index ["currency_id"], name: "index_trips_on_currency_id"
+    t.index ["end_city_id"], name: "index_trips_on_end_city_id"
+    t.index ["start_city_id"], name: "index_trips_on_start_city_id"
+    t.index ["station_begin_id"], name: "index_trips_on_station_begin_id"
+    t.index ["station_end_id"], name: "index_trips_on_station_end_id"
   end
 
 end
