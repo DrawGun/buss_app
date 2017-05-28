@@ -9,7 +9,7 @@ describe Currency do
 
     it "skips whitespaces" do
       currency_name = "RU"
-      subject.update(name: "   #{currency_name} ")
+      subject.update!(name: "   #{currency_name} ")
       expect(subject.name).to eq(currency_name)
     end
   end

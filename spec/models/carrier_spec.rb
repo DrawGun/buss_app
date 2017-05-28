@@ -9,7 +9,7 @@ describe Carrier do
 
     it "skips whitespaces" do
       carrier_name = "Киев"
-      subject.update(name: "   #{carrier_name} ")
+      subject.update!(name: "   #{carrier_name} ")
       expect(subject.name).to eq(carrier_name)
     end
   end

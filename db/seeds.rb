@@ -19,22 +19,23 @@ Dir.foreach(filepath) do |fname|
         carrier = Carrier.find_or_create_by(name: hash[:carrier_name].strip)
         currency = Currency.find_or_create_by(name: hash[:currency].strip)
 
-        trip = Trip.new(
+        trip = Trip.find_or_create_by(
+          start_city: start_city,
+          station_begin: station_begin,
+          end_city: end_city,
+          station_end: station_end,
+          carrier: carrier
+        )
+
+        trip_item = TripItem.create(
+          trip: trip,
           start_date: hash[:start_date],
           start_time: hash[:start_time],
           end_date: hash[:end_date],
           end_time: hash[:end_time],
-          total_cost: hash[:total_cost]
+          total_cost: hash[:total_cost],
+          currency: currency
         )
-
-        trip.start_city = start_city
-        trip.station_begin = station_begin
-        trip.end_city = end_city
-        trip.station_end = station_end
-        trip.carrier = carrier
-        trip.currency = currency
-
-        trip.save
       end
     end
   end

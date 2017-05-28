@@ -7,29 +7,10 @@ ActiveAdmin.register Trip, :namespace => :admin do
 
     column :start_city
     column :station_begin
-
-    column "Дата начала поездки" do |trip|
-      trip.start_date.strftime("%d.%m.%Y")
-    end
-
-    column "Время начала поездки" do |trip|
-      trip.start_date.strftime("%H:%M")
-    end
-
     column :end_city
     column :station_end
-
-    column "Дата окончания поездки" do |trip|
-      trip.end_date.strftime("%d.%m.%Y")
-    end
-
-    column "Время окончания поездки" do |trip|
-      trip.end_date.strftime("%H:%M")
-    end
-
     column :carrier
-    column :total_cost
-    column :currency
+    column :activity
 
     actions
   end
@@ -39,17 +20,9 @@ ActiveAdmin.register Trip, :namespace => :admin do
     f.inputs "Основное" do
       f.input :start_city, as: :select, collection: City.available_collection, input_html: { class: "select2" }
       f.input :station_begin, as: :select, collection: Station.available_collection, input_html: { class: "select2" }
-      f.input :start_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.start_date.strftime("%d.%m.%Y"), id: "start_date" }
-      f.input :start_time, as: :time_picker
-
       f.input :end_city, as: :select, collection: City.available_collection, input_html: { class: "select2" }
       f.input :station_end, as: :select, collection: Station.available_collection, input_html: { class: "select2" }
-      f.input :end_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.end_date.strftime("%d.%m.%Y"), id: "end_date" }
-      f.input :end_time, as: :time_picker
-
       f.input :carrier, as: :select, collection: Carrier.available_collection, input_html: { class: "select2" }
-      f.input :total_cost
-      f.input :currency, as: :select, collection: Currency.available_collection, input_html: { class: "select2" }
     end
 
     f.actions
@@ -58,11 +31,15 @@ ActiveAdmin.register Trip, :namespace => :admin do
   filter :id
   filter :start_city_id, as: :select, collection: -> { City.available_collection(name_only: true) }, input_html: { class: "select2" }
   filter :station_begin_id, as: :select, collection: -> { Station.available_collection(name_only: true) }, input_html: { class: "select2" }
-  filter :start_date
   filter :end_city_id, as: :select, collection: -> { City.available_collection(name_only: true) }, input_html: { class: "select2" }
   filter :station_end_id, as: :select, collection: -> { Station.available_collection(name_only: true) }, input_html: { class: "select2" }
-  filter :end_date
 
-  permit_params :start_city_id, :station_begin_id, :start_date, :start_time,
-    :end_city_id, :station_end_id, :end_date, :end_time, :carrier_id, :total_cost, :currency_id
+  permit_params :start_city_id, :station_begin_id, :end_city_id, :station_end_id,
+    :carrier_id
+
+  controller do
+    def scoped_collection
+      super.includes(:start_city, :end_city, :station_begin, :station_end, :carrier)
+    end
+  end
 end

@@ -1,0 +1,10 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      a.navbar-brand href="/"
+        = image_tag("site/brand.png", alt: "Buss app", size: "20x20")
+
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.pull-right
+        li
+          = link_to "Admin", root_url(subdomain: :admin)

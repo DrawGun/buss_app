@@ -13,7 +13,7 @@ describe City do
 
     it "skips whitespaces" do
       city_name = "Киев"
-      subject.update(name: "   #{city_name} ")
+      subject.update!(name: "   #{city_name} ")
       expect(subject.name).to eq(city_name)
     end
   end

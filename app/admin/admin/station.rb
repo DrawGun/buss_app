@@ -39,6 +39,10 @@ ActiveAdmin.register Station, :namespace => :admin do
         ) unless active_admin_config.scopes.map(&:name).include?(scope_type)
       end
     end
+
+    def scoped_collection
+      super.includes(:city)
+    end
   end
 
   permit_params :name, :city_id

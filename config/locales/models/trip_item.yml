@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models:
+      trip_item:
+        zero: Экземпляров Поездок
+        one: Экземпляр Поездка
+        few: Экземпляра Поездки
+        many: Экземпляров Поездок
+        other: Экземпляры Поездки
+
+    attributes:
+      trip_item:
+        start_date: Дата начала поездки
+        end_date: Дата окончания поездки
+        total_cost: Стоимость
+        currency: Валюта
+        trip: Поездка
+
+    errors:
+      trip_item:
+        start_date_greater_than_end_date: Дата начала поездки не может быть позже даты конца поездки
+        start_date_equal_end_date: Дата начала поездки не может быть точно равна дате конца поездки
