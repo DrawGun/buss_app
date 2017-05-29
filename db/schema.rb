@@ -87,7 +87,13 @@ ActiveRecord::Schema.define(version: 20170528215107) do
     t.integer "end_city_id", null: false
     t.integer "station_end_id", null: false
     t.integer "carrier_id", null: false
-    t.string "activity", default: "", null: false
+    t.boolean "monday", default: false, null: false
+    t.boolean "tuesday", default: false, null: false
+    t.boolean "wednesday", default: false, null: false
+    t.boolean "thursday", default: false, null: false
+    t.boolean "friday", default: false, null: false
+    t.boolean "saturday", default: false, null: false
+    t.boolean "sunday", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["carrier_id"], name: "index_trips_on_carrier_id"

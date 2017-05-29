@@ -1,0 +1,118 @@
+[1m[1;34mActiveSupport::ToJsonWithActiveSupportEncoder#methods[0m[0m: to_json
+[1m[1;34mActiveSupport::Configurable#methods[0m[0m: config
+[1m[1;34mAbstractController::Base#methods[0m[0m: action_methods  action_name  action_name=  available_action?  controller_path  response_body
+[1m[1;34mActionController::Metal#methods[0m[0m: 
+  content_type     dispatch  location=          middleware_stack?  request=       response=       session        status 
+  content_type=    headers   middleware_stack   performed?         reset_session  response_body=  set_request!   status=
+  controller_name  location  middleware_stack=  request            response       response_code   set_response!  to_a   
+[1m[1;34mActionView::ViewPaths#methods[0m[0m: 
+  _prefixes       append_view_path    formats   locale   lookup_context     template_exists?
+  any_templates?  details_for_lookup  formats=  locale=  prepend_view_path  view_paths      
+[1m[1;34mAbstractController::Rendering#methods[0m[0m: _normalize_render  view_assigns
+[1m[1;34mAbstractController::Translation#methods[0m[0m: l  localize  t  translate
+[1m[1;34mActionController::Helpers#methods[0m[0m: helpers
+[1m[1;34mActionDispatch::Routing::PolymorphicRoutes#methods[0m[0m: 
+  edit_polymorphic_path  edit_polymorphic_url  new_polymorphic_path  new_polymorphic_url  polymorphic_path  polymorphic_url
+[1m[1;34mActionDispatch::Routing::UrlFor#methods[0m[0m: full_url_for  route_for  url_for
+[1m[1;34mActionController::UrlFor#methods[0m[0m: url_options
+[1m[1;34mActiveSupport::Benchmarkable#methods[0m[0m: benchmark
+[1m[1;34mActionController::Redirecting#methods[0m[0m: _compute_redirect_to_location  redirect_back
+[1m[1;34mActionView::Rendering#methods[0m[0m: process  rendered_format  view_context  view_context_class  view_context_class=  view_renderer
+[1m[1;34mActionView::Layouts#methods[0m[0m: _layout_conditions  action_has_layout=  action_has_layout?
+[1m[1;34mActionController::Rendering#methods[0m[0m: render_to_string
+[1m[1;34mActionController::Renderers#methods[0m[0m: 
+  _render_to_body_with_renderer  _render_with_renderer_js  _render_with_renderer_json  _render_with_renderer_xml  render_to_body
+[1m[1;34mActionController::Head#methods[0m[0m: head
+[1m[1;34mActionController::ConditionalGet#methods[0m[0m: expires_in  expires_now  fresh_when  http_cache_forever  stale?
+[1m[1;34mAbstractController::Caching::Fragments#methods[0m[0m: 
+  expire_fragment  fragment_cache_key  fragment_exist?  instrument_fragment_cache  read_fragment  write_fragment
+[1m[1;34mAbstractController::Caching::ConfigMethods#methods[0m[0m: cache_store  cache_store=
+[1m[1;34mAbstractController::Caching#methods[0m[0m: view_cache_dependencies
+[1m[1;34mActionController::MimeResponds#methods[0m[0m: respond_to
+[1m[1;34mActionController::BasicImplicitRender#methods[0m[0m: send_action
+[1m[1;34mActionController::ImplicitRender#methods[0m[0m: default_render  method_for_action
+[1m[1;34mActiveSupport::Rescuable#methods[0m[0m: handler_for_rescue  rescue_with_handler
+[1m[1;34mActionController::StrongParameters#methods[0m[0m: params  params=
+[1m[1;34mActionController::FormBuilder#methods[0m[0m: default_form_builder
+[1m[1;34mActiveSupport::Callbacks#methods[0m[0m: run_callbacks
+[1m[1;34mActionController::ForceSSL#methods[0m[0m: force_ssl_redirect
+[1m[1;34mActionController::HttpAuthentication::Basic::ControllerMethods#methods[0m[0m: 
+  authenticate_or_request_with_http_basic  authenticate_with_http_basic  request_http_basic_authentication
+[1m[1;34mActionController::HttpAuthentication::Digest::ControllerMethods#methods[0m[0m: 
+  authenticate_or_request_with_http_digest  authenticate_with_http_digest  request_http_digest_authentication
+[1m[1;34mActionController::HttpAuthentication::Token::ControllerMethods#methods[0m[0m: 
+  authenticate_or_request_with_http_token  authenticate_with_http_token  request_http_token_authentication
+[1m[1;34mActionController::Rescue#methods[0m[0m: show_detailed_exceptions?
+[1m[1;34mActionController::Instrumentation#methods[0m[0m: render  send_data  send_file  view_runtime  view_runtime=
+[1m[1;34mActionController::RespondWith#methods[0m[0m: respond_with
+[1m[1;34mCanCan::ControllerAdditions#methods[0m[0m: can?  cannot?  current_ability  unauthorized!
+[1m[1;34mActionDispatch::Routing::RouteSet::MountedHelpers#methods[0m[0m: _main_app  main_app
+[1m[1;34mActiveRecord::Railties::ControllerRuntime#methods[0m[0m: db_runtime  db_runtime=
+[1m[1;34mTurbolinks::Redirection#methods[0m[0m: redirect_to
+[1m[1;34mDevise::Controllers::SignInOut#methods[0m[0m: bypass_sign_in  sign_in  sign_out  sign_out_all_scopes  signed_in?
+[1m[1;34mDevise::Controllers::StoreLocation#methods[0m[0m: store_location_for  stored_location_for
+[1m[1;34mDevise::Controllers::Helpers#methods[0m[0m: 
+  admin_user_session       allow_params_authentication!  devise_parameter_sanitizer  request_format         warden
+  admin_user_signed_in?    authenticate_admin_user!      handle_unverified_request   sign_in_and_redirect 
+  after_sign_in_path_for   current_admin_user            is_flashing_format?         sign_out_and_redirect
+  after_sign_out_path_for  devise_controller?            is_navigational_format?     signed_in_root_path  
+[1m[1;34mDevise::Controllers::UrlHelpers#methods[0m[0m: 
+  destroy_session_path  edit_password_path  new_password_path  new_session_path  password_path  session_path
+  destroy_session_url   edit_password_url   new_password_url   new_session_url   password_url   session_url 
+[1m[1;34mActionController::Base#methods[0m[0m: 
+  __callbacks                    _wrapper_options?               etaggers?                         mimes_for_respond_to=            
+  __callbacks?                   alert                           flash                             mimes_for_respond_to?            
+  _helper_methods                allow_forgery_protection        forgery_protection_origin_check   notice                           
+  _helper_methods=               allow_forgery_protection=       forgery_protection_origin_check=  per_form_csrf_tokens             
+  _helper_methods?               asset_host                      forgery_protection_strategy       per_form_csrf_tokens=            
+  _helpers                       asset_host=                     forgery_protection_strategy=      perform_caching                  
+  _helpers=                      assets_dir                      fragment_cache_keys               perform_caching=                 
+  _helpers?                      assets_dir=                     fragment_cache_keys=              relative_url_root                
+  _process_action_callbacks      default_asset_host_protocol     fragment_cache_keys?              relative_url_root=               
+  _protected_ivars               default_asset_host_protocol=    helpers_path                      request_forgery_protection_token 
+  _renderers                     default_static_extension        helpers_path=                     request_forgery_protection_token=
+  _renderers=                    default_static_extension=       helpers_path?                     rescue_handlers                  
+  _renderers?                    default_url_options             include_all_helpers               rescue_handlers=                 
+  _run_process_action_callbacks  default_url_options=            include_all_helpers=              rescue_handlers?                 
+  _view_cache_dependencies       default_url_options?            include_all_helpers?              responder                        
+  _view_cache_dependencies=      enable_fragment_cache_logging   javascripts_dir                   responder=                       
+  _view_cache_dependencies?      enable_fragment_cache_logging=  javascripts_dir=                  responder?                       
+  _view_paths                    etag_with_template_digest       log_warning_on_csrf_failure       stylesheets_dir                  
+  _view_paths=                   etag_with_template_digest=      log_warning_on_csrf_failure=      stylesheets_dir=                 
+  _view_paths?                   etag_with_template_digest?      logger                          
+  _wrapper_options               etaggers                        logger=                         
+  _wrapper_options=              etaggers=                       mimes_for_respond_to            
+[1m[1;34m#<Module:0x0055bf39725260>#methods[0m[0m: 
+  admin_admin_comment_url   admin_currency_url    admin_user_password_url         edit_admin_user_password_url  rails_info_properties_url
+  admin_admin_comments_url  admin_dashboard_url   admin_user_session_url          new_admin_carrier_url         rails_info_routes_url    
+  admin_carrier_url         admin_root_url        destroy_admin_user_session_url  new_admin_city_url            rails_info_url           
+  admin_carriers_url        admin_station_url     edit_admin_carrier_url          new_admin_currency_url        rails_mailers_url        
+  admin_cities_url          admin_stations_url    edit_admin_city_url             new_admin_station_url         root_url                 
+  admin_city_url            admin_trip_item_url   edit_admin_currency_url         new_admin_trip_item_url       site_root_url            
+  admin_comment_url         admin_trip_items_url  edit_admin_station_url          new_admin_trip_url          
+  admin_comments_url        admin_trip_url        edit_admin_trip_item_url        new_admin_user_password_url 
+  admin_currencies_url      admin_trips_url       edit_admin_trip_url             new_admin_user_session_url  
+[1m[1;34m#<Module:0x0055bf39725238>#methods[0m[0m: 
+  admin_admin_comment_path   admin_currency_path    admin_user_password_path         edit_admin_user_password_path  rails_info_path           
+  admin_admin_comments_path  admin_dashboard_path   admin_user_session_path          new_admin_carrier_path         rails_info_properties_path
+  admin_carrier_path         admin_root_path        destroy_admin_user_session_path  new_admin_city_path            rails_info_routes_path    
+  admin_carriers_path        admin_station_path     edit_admin_carrier_path          new_admin_currency_path        rails_mailers_path        
+  admin_cities_path          admin_stations_path    edit_admin_city_path             new_admin_station_path         root_path                 
+  admin_city_path            admin_trip_item_path   edit_admin_currency_path         new_admin_trip_item_path       site_root_path            
+  admin_comment_path         admin_trip_items_path  edit_admin_station_path          new_admin_trip_path          
+  admin_comments_path        admin_trip_path        edit_admin_trip_item_path        new_admin_user_password_path 
+  admin_currencies_path      admin_trips_path       edit_admin_trip_path             new_admin_user_session_path  
+[1m[1;34mApplicationController#methods[0m[0m: access_denied
+[1m[1;34mInheritedResources::Actions#methods[0m[0m: create  edit  new  update
+[1m[1;34mMethodOrProcHelper#methods[0m[0m: call_method_or_exec_proc  call_method_or_proc_on  render_in_context  render_or_call_method_or_proc_on
+[1m[1;34mActiveAdmin::BaseController#methods[0m[0m: only_render_implemented_actions
+[1m[1;34mActiveAdmin::ScopeChain#methods[0m[0m: scope_chain
+[1m[1;34mActiveAdmin::ResourceController::Streaming#methods[0m[0m: index
+[1m[1;34mActiveAdmin::ViewHelpers::DownloadFormatLinksHelper#methods[0m[0m: build_download_format_links  build_download_formats
+[1m[1;34mActiveAdmin::BatchActions::Controller#methods[0m[0m: batch_action
+[1m[1;34m#<Module:0x007f3566916070>#methods[0m[0m: _routes
+[1m[1;34mAdmin::StationsController#methods[0m[0m: permitted_params  resource  resource_class  scoped_collection  update_places_scopes
+[1m[1;34minstance variables[0m[0m: 
+  [0;34m@_action_has_layout[0m  [0;34m@_config[0m          [0;34m@_params[0m   [0;34m@_response[0m       [0;34m@_routes[0m      [0;34m@marked_for_same_origin_verification[0m
+  [0;34m@_action_name[0m        [0;34m@_lookup_context[0m  [0;34m@_request[0m  [0;34m@_response_body[0m  [0;34m@current_tab[0m
+[1m[1;34mlocals[0m[0m: _  __  _dir_  _ex_  _file_  _in_  _out_  _pry_

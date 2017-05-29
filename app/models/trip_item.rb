@@ -39,15 +39,15 @@ class TripItem < ApplicationRecord
   end
 
   def set_trip_activity
-    trip_days = trip.trip_items.pluck(:start_date)
-      .map { |date| Russian::strftime(date, "%a") }.uniq
+    trip_days = trip.trip_items.pluck(:start_date).map(&:wday).uniq
 
-    activity = if trip_days.size == 7
-      "ежедневно"
-    else
-      trip_days.join(", ")
+    shedule = {}
+
+    Trip::SCHEDULE.keys.each_with_index do |day, index|
+      is_active = index.in?(trip_days)
+      shedule[day] = is_active
     end
 
-    trip.update(activity: activity)
+    trip.update(shedule)
   end
 end

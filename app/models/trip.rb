@@ -1,5 +1,16 @@
 class Trip < ApplicationRecord
   include DefaultScopes
+  include TripPresenter
+
+  SCHEDULE = {
+    sunday: "Вс",
+    monday: "Пн",
+    tuesday: "Вт",
+    wednesday: "Ср",
+    thursday: "Чт",
+    friday: "Пт",
+    saturday: "Сб"
+  }
 
   belongs_to :start_city, class_name: "City", foreign_key: :start_city_id
   belongs_to :end_city, class_name: "City", foreign_key: :end_city_id
@@ -18,13 +29,13 @@ class Trip < ApplicationRecord
   delegate :name, to: :station_end, prefix: true
   delegate :name, to: :carrier, prefix: true
 
-  def description
-    "#{start_city_name}, #{station_begin_name} - #{end_city_name}, #{station_end_name}"
-  end
-
   class << self
     def available_collection
       self.sorted.map { |t| [t.description, t.id] }
     end
+  end
+
+  def daily?
+    monday && tuesday && wednesday && thursday && friday && saturday && sunday
   end
 end

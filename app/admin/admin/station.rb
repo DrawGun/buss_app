@@ -41,7 +41,11 @@ ActiveAdmin.register Station, :namespace => :admin do
     end
 
     def scoped_collection
-      super.includes(:city)
+      if action_name == "index"
+        super.includes(:city)
+      else
+        super
+      end
     end
   end
 

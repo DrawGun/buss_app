@@ -17,3 +17,19 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+
+form {
+  &.filter_form {
+    .select2 {
+      width: 100% !important;
+    }
+  }
+
+  &.formtastic {
+    .select2 {
+      width: 80% !important;
+    }
+  }
+}
+
