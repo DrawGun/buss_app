@@ -1,10 +1,6 @@
 class Site::WelcomeController < Site::BaseController
   before_action :set_filter_options
 
-  def index
-    @default_value = "all"
-  end
-
   private
 
   def set_filter_options

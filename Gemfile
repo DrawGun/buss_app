@@ -70,6 +70,7 @@ gem "russian"
 gem "react-rails"
 gem "active_model_serializers"
 gem "lodash-rails"
+gem "font-awesome-rails"
 
 source "http://rails-assets.org" do
   gem "rails-assets-select2"

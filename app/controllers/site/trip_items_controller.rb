@@ -16,6 +16,7 @@ class Site::TripItemsController < Site::BaseController
     end
 
     @trip_items = TripItem.sorted_by_start_date.where(trip_id: trips.pluck(:id))
-      .page(params[:page].to_i).per(30)
+      .includes(:currency, trip: [:start_city, :station_begin, :end_city, :station_end, :carrier])
+      .page(params[:page].to_i).per(10)
   end
 end

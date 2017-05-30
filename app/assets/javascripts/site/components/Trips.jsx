@@ -45,3 +45,7 @@ class Trips extends React.Component {
     );
   }
 }
+
+Trips.propTypes = {
+  trips: React.PropTypes.array
+};
