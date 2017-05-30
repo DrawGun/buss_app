@@ -29,6 +29,9 @@ class Trip < ApplicationRecord
   delegate :name, to: :station_end, prefix: true
   delegate :name, to: :carrier, prefix: true
 
+  scope :daily, -> { where(sunday: true, monday: true, tuesday: true, wednesday: true, thursday: true, friday: true, saturday: true) }
+  scope :by_wday, -> (by_wday) { where(by_wday => true) }
+
   class << self
     def available_collection
       self.sorted.map { |t| [t.description, t.id] }

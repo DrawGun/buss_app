@@ -64,9 +64,12 @@ gem "slim-rails"
 gem "activeadmin"
 gem "devise"
 gem "cancan"
-gem "will_paginate", "~> 3.1.0"
+gem "will_paginate"
 gem "translit"
 gem "russian"
+gem "react-rails"
+gem "active_model_serializers"
+gem "lodash-rails"
 
 source "http://rails-assets.org" do
   gem "rails-assets-select2"

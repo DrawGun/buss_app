@@ -10,7 +10,12 @@ class TripItem < ApplicationRecord
 
   after_save :set_trip_activity
 
-  delegate :description, :carrier_name, to: :trip, prefix: true
+  delegate :description, :carrier_name, :start_point, :end_point,
+    :activity, to: :trip, prefix: true
+
+  delegate :name, to: :currency, prefix: true
+
+  scope :sorted_by_start_date, -> { order(start_date: :asc) }
 
   def start_time
     start_date.strftime("%H:%M")

@@ -15,4 +15,12 @@ module TripPresenter
       str.join(", ")
     end
   end
+
+  def start_point
+    "#{start_city_name}, #{station_begin_name}"
+  end
+
+  def end_point
+    "#{end_city_name}, #{station_end_name}"
+  end
 end
