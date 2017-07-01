@@ -3,4 +3,4 @@
 #= require active_admin/base
 
 $ ->
-  $('select.select2').select2(width: '200px')
+  $("select.select2").select2(width: "200px")

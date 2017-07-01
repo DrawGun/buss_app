@@ -34,7 +34,9 @@ class Trip < ApplicationRecord
 
   class << self
     def available_collection
-      self.sorted.map { |t| [t.description, t.id] }
+      self.sorted
+        .includes(:start_city, :end_city, :station_begin, :station_end)
+        .map { |t| [t.description, t.id] }
     end
   end
 

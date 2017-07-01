@@ -12,7 +12,7 @@ ActiveAdmin.register Carrier, :namespace => :admin do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs 'Основное' do
+    f.inputs "Основное" do
       f.input :name
     end
 
@@ -20,7 +20,7 @@ ActiveAdmin.register Carrier, :namespace => :admin do
   end
 
   filter :id
-  filter :name, as: :select, collection: -> { Carrier.available_collection(name_only: true) }, input_html: { class: 'select2' }
+  filter :name, as: :select, collection: -> { Carrier.available_collection(name_only: true) }, input_html: { class: "select2" }
 
 
   permit_params :name
