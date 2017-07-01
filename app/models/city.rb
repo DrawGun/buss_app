@@ -1,7 +1,9 @@
 class City < ApplicationRecord
-  include CleanNameWithValidation
+  include CleanName
   include AvailableCollection
   include DefaultScopes
+
+  validates :name, presence: true, uniqueness: true
 
   has_many :stations, inverse_of: :city
   has_many :start_trips, class_name: 'Trip', foreign_key: :start_city_id

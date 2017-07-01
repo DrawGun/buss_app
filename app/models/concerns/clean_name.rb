@@ -1,4 +1,4 @@
-module CleanNameWithValidation
+module CleanName
   extend ActiveSupport::Concern
 
   included do
