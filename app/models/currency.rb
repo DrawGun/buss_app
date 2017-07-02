@@ -3,5 +3,5 @@ class Currency < ApplicationRecord
   include AvailableCollection
   include DefaultScopes
 
-  has_many :trip_items, inverse_of: :currency
+  has_many :trips, inverse_of: :currency
 end

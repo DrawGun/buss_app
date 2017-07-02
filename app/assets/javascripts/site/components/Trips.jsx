@@ -10,9 +10,9 @@ class Trips extends React.Component {
       <table className="table table-striped table-hover table-bordered">
         <thead>
           <tr>
-            <th>Дата начала поездки</th>
+            <th>Время начала поездки</th>
             <th>Место отправления</th>
-            <th>Дата окончания поездки</th>
+            <th>Время окончания поездки</th>
             <th>Место прибытия</th>
             <th>Перевозчик</th>
             <th>Стоимость</th>
@@ -33,13 +33,13 @@ class Trips extends React.Component {
       trips,
       (trip) => (
         <tr key={trip.id}>
-          <td>{trip.start_date_str}</td>
-          <td>{trip.trip_start_point}</td>
-          <td>{trip.end_date_str}</td>
-          <td>{trip.trip_end_point}</td>
-          <td>{trip.trip_carrier_name}</td>
+          <td>{trip.start_time}</td>
+          <td>{trip.start_point}</td>
+          <td>{trip.end_time}</td>
+          <td>{trip.end_point}</td>
+          <td>{trip.carrier_name}</td>
           <td>{trip.total_sum}</td>
-          <td>{trip.trip_activity}</td>
+          <td>{trip.activity}</td>
         </tr>
       )
     );
