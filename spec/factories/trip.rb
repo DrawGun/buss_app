@@ -6,5 +6,9 @@ FactoryGirl.define do
     association :station_end, factory: :station
 
     carrier
+    currency
+
+    start_time { "11:00" }
+    end_time { "21:00" }
   end
 end

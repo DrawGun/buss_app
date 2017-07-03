@@ -98,7 +98,7 @@ TripsBox.defaultProps = {
   value: "all",
   trips: [],
   page: 1,
-  loading: false
+  loading: true
 };
 
 TripsBox.propTypes = {

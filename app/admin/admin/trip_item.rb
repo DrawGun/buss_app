@@ -29,9 +29,6 @@ ActiveAdmin.register TripItem, :namespace => :admin do
       trip_item.end_date.strftime("%H:%M")
     end
 
-    column :total_cost
-    column :currency
-
     actions
   end
 
@@ -44,9 +41,6 @@ ActiveAdmin.register TripItem, :namespace => :admin do
 
       f.input :end_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.end_date.strftime("%d.%m.%Y"), id: "end_date" }
       f.input :end_time, as: :time_picker
-
-      f.input :total_cost
-      f.input :currency, as: :select, collection: Currency.available_collection, input_html: { class: "select2" }
     end
 
     f.actions
@@ -59,7 +53,7 @@ ActiveAdmin.register TripItem, :namespace => :admin do
   controller do
     def scoped_collection
       if action_name == "index"
-        super.includes(:currency, trip: [:start_city, :station_begin, :end_city, :station_end, :carrier])
+        super.includes(trip: [:start_city, :station_begin, :end_city, :station_end, :carrier])
       else
         super
       end
