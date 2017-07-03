@@ -1,4 +1,5 @@
 class TripItem < ApplicationRecord
+  include DefaultScopes
   attr_reader :start_time, :end_time
 
   belongs_to :trip, inverse_of: :trip_items

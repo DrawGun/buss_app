@@ -16,6 +16,7 @@ class Site::TripsController < Site::BaseController
       Trip.where(query)
     end
 
+    response.headers["TOTAL_TRIPS"] = trips.total_count.to_s
     @trips = trips.includes(:currency, :start_city, :station_begin, :end_city, :station_end, :carrier)
       .page(params[:page].to_i).per(10)
   end

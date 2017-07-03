@@ -1,7 +1,15 @@
 class Seeds::CalculateSchedule < ApplicationService
 
   def initialize
-    @min_trips = 4
+    trip_items_start_dates = TripItem.sorted.map { |ti| ti.start_date.to_date }.uniq.sort
+    from = trip_items_start_dates.first
+    to = trip_items_start_dates.last
+
+    from.upto(to) do |day|
+      wday = day.wday
+      shedule[wday] ||= 0
+      shedule[wday] += 1
+    end
   end
 
   def call
@@ -13,12 +21,12 @@ class Seeds::CalculateSchedule < ApplicationService
         obj[wday] += 1
       end
 
-      shedule = {}
+      hash = {}
       Trip::SCHEDULE.keys.each_with_index do |day, index|
-        shedule[day] = trip_obj[index].to_i >= min_trips
+        hash[day] = trip_obj[index].to_i >= shedule[index]
       end
 
-      trip.update(shedule)
+      trip.update(hash)
     end
   end
 
@@ -28,5 +36,9 @@ class Seeds::CalculateSchedule < ApplicationService
 
   def day
     86400
+  end
+
+  def shedule
+    @_shedule ||= {}
   end
 end

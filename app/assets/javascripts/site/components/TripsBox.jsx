@@ -76,15 +76,18 @@ class TripsBox extends React.Component {
         url: `/trips?filter=${value}&page=${page}`,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data){
+        success: function(data, textStatus, request){
+          let showMoreButtonDisabled = false;
+          const totalTrips = parseInt(request.getResponseHeader('TOTAL_TRIPS'));
+
+          if (trips.length + data.length == totalTrips) {
+            showMoreButtonDisabled = true;
+          }
+
           if (page == 1) {
-            self.setState({trips: data, loading: false, showMoreButtonDisabled: false});
+            self.setState({trips: data, loading: false, showMoreButtonDisabled: showMoreButtonDisabled});
           } else {
-            if (data.length == 0) {
-              self.setState({showMoreButtonDisabled: true, loading: false});
-            } else {
-              self.setState({trips: _.concat(trips, data), loading: false});
-            }
+            self.setState({trips: _.concat(trips, data), loading: false, showMoreButtonDisabled: showMoreButtonDisabled});
           }
         },
         failure: function(errMsg) {
