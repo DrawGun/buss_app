@@ -22,9 +22,8 @@ class Trip < ApplicationRecord
   has_many :trip_items, inverse_of: :trip
 
   validates :start_city, :end_city, :station_begin, :station_end,
-    :carrier, :start_time, :end_time, presence: true
+    :carrier, :start_time, :end_time, :currency, presence: true
 
-  validates :currency, presence: true
   validates :total_cost, numericality: { greater_than_or_equal_to: 0 }, presence: true
 
   delegate :name, to: :start_city, prefix: true

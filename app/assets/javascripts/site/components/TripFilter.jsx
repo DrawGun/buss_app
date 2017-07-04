@@ -55,6 +55,8 @@ class TripFilter extends React.Component {
       valueArray = valueArray.concat([checkbox_value]);
     };
 
+    valueArray = _.compact(valueArray);
+
     this.setState({ value: _.join(valueArray, ',') }, function() {
       this.props.setFilter({value: this.state.value})
     });

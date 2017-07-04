@@ -79,8 +79,8 @@ class TripsBox extends React.Component {
         success: function(data, textStatus, request){
           let showMoreButtonDisabled = false;
           const totalTrips = parseInt(request.getResponseHeader('TOTAL_TRIPS'));
-
-          if (trips.length + data.length == totalTrips) {
+          console.log(totalTrips, trips.length + data.length, trips.length + data.length == totalTrips)
+          if (trips.length + data.length >= totalTrips) {
             showMoreButtonDisabled = true;
           }
 
