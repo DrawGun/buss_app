@@ -8,7 +8,7 @@ module AvailableCollection
       if name_only
         cities.pluck(:name)
       else
-        cities.pluck(:id, :name).map { |arr| [arr[1], arr[0]] }
+        cities.pluck(:name, :id)
       end
     end
   end

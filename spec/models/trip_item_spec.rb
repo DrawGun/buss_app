@@ -1,19 +1,15 @@
 require "rails_helper"
 
-describe TripItem do
+describe TripItem, :aggregate_failures do
   subject do
     create(:trip_item)
   end
 
   context "assotiations" do
-    it { should belong_to(:currency) }
+    it { should belong_to(:trip) }
   end
 
   context "validations" do
-    it { should validate_presence_of(:currency) }
-    it { should validate_presence_of(:total_cost) }
-    it { should validate_numericality_of(:total_cost).is_greater_than_or_equal_to(0) }
-
     it "check_trip_dates" do
       t1 = Time.zone.now
       t2 = t1 + 30.minutes
@@ -23,11 +19,17 @@ describe TripItem do
     end
   end
 
-  context "callbacks" do
-    it "set_trip_activity" do
-      trip = subject.trip
-      wday = Russian::strftime(subject.start_date, "%a")
-      expect(trip.activity).to eq(wday)
+  context "getters" do
+    let(:start_time) { "11:30" }
+    let(:end_time) { "13:30" }
+
+    it "start_time=" do
+      subject.start_time = start_time
+      subject.end_time = end_time
+      subject.save!
+
+      expect(subject.start_date.strftime("%H:%M")).to eq(start_time)
+      expect(subject.end_date.strftime("%H:%M")).to eq(end_time)
     end
   end
 end

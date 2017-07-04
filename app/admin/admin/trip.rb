@@ -23,6 +23,9 @@ ActiveAdmin.register Trip, :namespace => :admin do
       f.input :end_city, as: :select, collection: City.available_collection, input_html: { class: "select2" }
       f.input :station_end, as: :select, collection: Station.available_collection, input_html: { class: "select2" }
       f.input :carrier, as: :select, collection: Carrier.available_collection, input_html: { class: "select2" }
+      f.input :total_cost
+      f.input :currency, as: :select, collection: Currency.available_collection, input_html: { class: "select2" }
+
     end
 
     f.actions

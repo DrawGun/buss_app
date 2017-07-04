@@ -1,6 +1,6 @@
 namespace :site, path: '/', constraints: { subdomain: /.*/ } do
 
-  resources :trip_items, only: :index
+  resources :trips, only: :index
 
   root to: "welcome#index"
 end

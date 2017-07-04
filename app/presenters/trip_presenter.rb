@@ -1,6 +1,6 @@
 module TripPresenter
   def description
-    "#{start_city_name}, #{station_begin_name} - #{end_city_name}, #{station_end_name}"
+    "#{start_point} - #{end_point}"
   end
 
   def activity

@@ -12,7 +12,7 @@ class TripsBox extends React.Component {
 
   render() {
     const { filter_options, default_value } = this.props;
-    const { value, loading } = this.state;
+    const { value, loading, showMoreButtonDisabled } = this.state;
 
     return (
       <div className="trips-section">
@@ -23,7 +23,7 @@ class TripsBox extends React.Component {
           loading={loading} />
 
        {this.state.trips && (!this.state.loading || this.state.page != 1) && this.renderTrips()}
-       {this.state.trips && !this.state.loading && this.renderLoadMoreButton()}
+       {this.state.trips && !this.state.loading && !this.state.showMoreButtonDisabled && this.renderLoadMoreButton()}
        {this.state.loading && this.renderSpinner()}
       </div>
     )
@@ -73,14 +73,21 @@ class TripsBox extends React.Component {
 
     jQuery.ajax({
         type: "GET",
-        url: `/trip_items?filter=${value}&page=${page}`,
+        url: `/trips?filter=${value}&page=${page}`,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(data){
-          if(page == 1) {
-            self.setState({trips: data, loading: false});
-          }else{
-            self.setState({trips: _.concat(trips, data), loading: false});
+        success: function(data, textStatus, request){
+          let showMoreButtonDisabled = false;
+          const totalTrips = parseInt(request.getResponseHeader('TOTAL_TRIPS'));
+          console.log(totalTrips, trips.length + data.length, trips.length + data.length == totalTrips)
+          if (trips.length + data.length >= totalTrips) {
+            showMoreButtonDisabled = true;
+          }
+
+          if (page == 1) {
+            self.setState({trips: data, loading: false, showMoreButtonDisabled: showMoreButtonDisabled});
+          } else {
+            self.setState({trips: _.concat(trips, data), loading: false, showMoreButtonDisabled: showMoreButtonDisabled});
           }
         },
         failure: function(errMsg) {
@@ -102,5 +109,5 @@ TripsBox.propTypes = {
   loading: React.PropTypes.bool,
   page: React.PropTypes.number,
   trips: React.PropTypes.array,
-  value: React.PropTypes.string
+  value:  React.PropTypes.string
 };

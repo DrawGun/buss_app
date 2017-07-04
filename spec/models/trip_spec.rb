@@ -11,6 +11,8 @@ describe Trip do
     it { should belong_to(:station_begin).class_name('Station').with_foreign_key('station_begin_id') }
     it { should belong_to(:station_end).class_name('Station').with_foreign_key('station_end_id') }
     it { should belong_to(:carrier) }
+    it { should belong_to(:currency) }
+    it { should have_many(:trip_items) }
   end
 
   context "validations" do
@@ -19,6 +21,8 @@ describe Trip do
     it { should validate_presence_of(:station_begin) }
     it { should validate_presence_of(:station_end) }
     it { should validate_presence_of(:carrier) }
-    it { should have_many(:trip_items) }
+    it { should validate_presence_of(:currency) }
+    it { should validate_presence_of(:total_cost) }
+    it { should validate_numericality_of(:total_cost).is_greater_than_or_equal_to(0) }
   end
 end

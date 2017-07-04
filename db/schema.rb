@@ -72,12 +72,9 @@ ActiveRecord::Schema.define(version: 20170528215107) do
   create_table "trip_items", force: :cascade do |t|
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
-    t.decimal "total_cost", precision: 10, scale: 2, default: "0.0", null: false
-    t.integer "currency_id", null: false
     t.integer "trip_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["currency_id"], name: "index_trip_items_on_currency_id"
     t.index ["trip_id"], name: "index_trip_items_on_trip_id"
   end
 
@@ -87,6 +84,8 @@ ActiveRecord::Schema.define(version: 20170528215107) do
     t.integer "end_city_id", null: false
     t.integer "station_end_id", null: false
     t.integer "carrier_id", null: false
+    t.decimal "total_cost", precision: 10, scale: 2, default: "0.0", null: false
+    t.integer "currency_id", null: false
     t.boolean "monday", default: false, null: false
     t.boolean "tuesday", default: false, null: false
     t.boolean "wednesday", default: false, null: false
@@ -94,9 +93,12 @@ ActiveRecord::Schema.define(version: 20170528215107) do
     t.boolean "friday", default: false, null: false
     t.boolean "saturday", default: false, null: false
     t.boolean "sunday", default: false, null: false
+    t.string "start_time", null: false
+    t.string "end_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["carrier_id"], name: "index_trips_on_carrier_id"
+    t.index ["currency_id"], name: "index_trips_on_currency_id"
     t.index ["end_city_id"], name: "index_trips_on_end_city_id"
     t.index ["start_city_id"], name: "index_trips_on_start_city_id"
     t.index ["station_begin_id"], name: "index_trips_on_station_begin_id"
