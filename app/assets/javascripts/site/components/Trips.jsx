@@ -7,22 +7,9 @@ class Trips extends React.Component {
     const trips = this.prepareTrips();
 
     return (
-      <table className="table table-striped table-hover table-bordered">
-        <thead>
-          <tr>
-            <th>Время начала поездки</th>
-            <th>Место отправления</th>
-            <th>Время окончания поездки</th>
-            <th>Место прибытия</th>
-            <th>Перевозчик</th>
-            <th>Стоимость</th>
-            <th>График движения</th>
-          </tr>
-        </thead>
-        <tbody>
-          {trips}
-        </tbody>
-      </table>
+      <div>
+        { trips }
+      </div>
     )
   }
 
@@ -32,14 +19,30 @@ class Trips extends React.Component {
     return _.map(
       trips,
       (trip) => (
-        <tr key={trip.id}>
-          <td>{trip.start_time}</td>
-          <td>{trip.start_point}</td>
-          <td>{trip.end_time}</td>
-          <td>{trip.end_point}</td>
-          <td>{trip.carrier_name}</td>
-          <td>{trip.total_sum}</td>
-          <td>{trip.activity}</td>
+        <table className="table table-striped table-hover table-bordered" key={trip.key}>
+          <thead>
+            <tr className="row">
+              <th colSpan="5" className="col-md-12">{ trip.direction }</th>
+            </tr>
+          </thead>
+          <tbody>
+            { this.prepareTripItemss(trip.trips) }
+          </tbody>
+        </table>
+      )
+    );
+  }
+
+  prepareTripItemss(trips) {
+    return _.map(
+      trips,
+      (trip) => (
+        <tr key={trip.id} className="row">
+          <td className="col-md-5">{trip.trip}</td>
+          <td className="col-md-2">{trip.time}</td>
+          <td className="col-md-2">{trip.activity}</td>
+          <td className="col-md-1">{trip.total_cost}</td>
+          <td className="col-md-2">{trip.carrier}</td>
         </tr>
       )
     );

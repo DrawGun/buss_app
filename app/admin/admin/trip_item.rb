@@ -13,20 +13,12 @@ ActiveAdmin.register TripItem, :namespace => :admin do
       trip_item.trip_carrier_name
     end
 
-    column "Дата начала поездки" do |trip_item|
-      trip_item.start_date.strftime("%d.%m.%Y")
+    column "Начало поездки" do |trip_item|
+      trip_item.start_datetime
     end
 
-    column "Время начала поездки" do |trip_item|
-      trip_item.start_date.strftime("%H:%M")
-    end
-
-    column "Дата окончания поездки" do |trip_item|
-      trip_item.end_date.strftime("%d.%m.%Y")
-    end
-
-    column "Время окончания поездки" do |trip_item|
-      trip_item.end_date.strftime("%H:%M")
+    column "Окончание поездки" do |trip_item|
+      trip_item.end_datetime
     end
 
     actions
@@ -37,10 +29,7 @@ ActiveAdmin.register TripItem, :namespace => :admin do
     f.inputs "Основное" do
       f.input :trip, as: :select, collection: Trip.includes(:start_city, :station_begin, :end_city, :station_end).available_collection, input_html: { class: "select2" }
       f.input :start_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.start_date.strftime("%d.%m.%Y"), id: "start_date" }
-      f.input :start_time, as: :time_picker
-
       f.input :end_date, as: :datepicker, datepicker_options: { dateFormat: "dd.mm.yy" }, input_html: { value: f.object.end_date.strftime("%d.%m.%Y"), id: "end_date" }
-      f.input :end_time, as: :time_picker
     end
 
     f.actions

@@ -3,7 +3,8 @@ require "rails_helper"
 describe Seeds::CalculateSchedule, :aggregate_failures do
   let(:start_time) { "11:00" }
   let(:end_time) { "18:00" }
-  let(:trip) { create(:trip, :raw, start_time: start_time, end_time: end_time) }
+  let(:trip_1) { create(:trip, :raw, start_time: start_time, end_time: end_time) }
+  let(:trip_2) { create(:trip, :raw, start_time: start_time, end_time: end_time) }
 
   before do
     arr = [
@@ -14,33 +15,52 @@ describe Seeds::CalculateSchedule, :aggregate_failures do
 
     arr.each do |date_str|
       date = Date.parse(date_str)
-      trip_item = build(
+      trip_item_1 = build(
         :trip_item,
-        trip: trip,
+        trip: trip_1,
         start_date: date,
-        start_time: start_time,
         end_date: date,
-        end_time: end_time
+        auto_created: true
       )
 
-      trip_item.save!
+      trip_item_2 = build(
+        :trip_item,
+        trip: trip_2,
+        start_date: date + 1.day,
+        end_date: date + 1.day,
+        auto_created: true
+      )
+
+      trip_item_1.save!
+      trip_item_2.save!
     end
   end
 
   context "call" do
     before do
       described_class.call()
-      trip.reload
+      trip_1.reload
+      trip_2.reload
     end
 
-    it "filled database" do
-      expect(trip.monday).to be true
-      expect(trip.tuesday).to be false
-      expect(trip.wednesday).to be true
-      expect(trip.thursday).to be false
-      expect(trip.friday).to be true
-      expect(trip.saturday).to be false
-      expect(trip.sunday).to be false
+    it "filled trip_1" do
+      expect(trip_1.monday).to be true
+      expect(trip_1.tuesday).to be false
+      expect(trip_1.wednesday).to be true
+      expect(trip_1.thursday).to be false
+      expect(trip_1.friday).to be true
+      expect(trip_1.saturday).to be false
+      expect(trip_1.sunday).to be false
+    end
+
+    it "filled trip_2" do
+      expect(trip_2.monday).to be false
+      expect(trip_2.tuesday).to be true
+      expect(trip_2.wednesday).to be false
+      expect(trip_2.thursday).to be true
+      expect(trip_2.friday).to be false
+      expect(trip_2.saturday).to be true
+      expect(trip_2.sunday).to be false
     end
   end
 end

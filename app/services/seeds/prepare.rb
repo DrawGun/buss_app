@@ -9,9 +9,8 @@ class Seeds::Prepare < ApplicationService
     TripItem.create(
       trip_id: trip.id,
       start_date: hash[:start_date],
-      start_time: hash[:start_time],
       end_date: hash[:end_date],
-      end_time: hash[:end_time]
+      auto_created: true
     )
   end
 

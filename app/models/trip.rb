@@ -25,6 +25,9 @@ class Trip < ApplicationRecord
     :carrier, :start_time, :end_time, :currency, presence: true
 
   validates :total_cost, numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :start_time, presence: true, uniqueness: {
+    scope: [:end_time, :total_cost, :start_city, :end_city, :station_begin, :station_end, :carrier]
+  }
 
   delegate :name, to: :start_city, prefix: true
   delegate :name, to: :end_city, prefix: true

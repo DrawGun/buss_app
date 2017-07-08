@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528215107) do
+ActiveRecord::Schema.define(version: 20170707231832) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -47,18 +47,21 @@ ActiveRecord::Schema.define(version: 20170528215107) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_carriers_on_name", unique: true
   end
 
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_cities_on_name", unique: true
   end
 
   create_table "currencies", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_currencies_on_name", unique: true
   end
 
   create_table "stations", force: :cascade do |t|
@@ -67,11 +70,12 @@ ActiveRecord::Schema.define(version: 20170528215107) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_stations_on_city_id"
+    t.index ["name", "city_id"], name: "index_stations_on_name_and_city_id", unique: true
   end
 
   create_table "trip_items", force: :cascade do |t|
-    t.datetime "start_date", null: false
-    t.datetime "end_date", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.integer "trip_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -101,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170528215107) do
     t.index ["currency_id"], name: "index_trips_on_currency_id"
     t.index ["end_city_id"], name: "index_trips_on_end_city_id"
     t.index ["start_city_id"], name: "index_trips_on_start_city_id"
+    t.index ["start_time", "end_time", "total_cost", "start_city_id", "end_city_id", "station_begin_id", "station_end_id", "carrier_id"], name: "trip_common_index", unique: true
     t.index ["station_begin_id"], name: "index_trips_on_station_begin_id"
     t.index ["station_end_id"], name: "index_trips_on_station_end_id"
   end
