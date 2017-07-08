@@ -12,6 +12,9 @@ ActiveAdmin.register Trip, :namespace => :admin do
     column :carrier
     column :activity
 
+    column :start_time
+    column :end_time
+
     actions
   end
 
@@ -26,16 +29,18 @@ ActiveAdmin.register Trip, :namespace => :admin do
       f.input :total_cost
       f.input :currency, as: :select, collection: Currency.available_collection, input_html: { class: "select2" }
 
+      f.input :start_time, as: :time_picker
+      f.input :end_time, as: :time_picker
     end
 
     f.actions
   end
 
   filter :id
-  filter :start_city_id, as: :select, collection: -> { City.available_collection(name_only: true) }, input_html: { class: "select2" }
-  filter :station_begin_id, as: :select, collection: -> { Station.available_collection(name_only: true) }, input_html: { class: "select2" }
-  filter :end_city_id, as: :select, collection: -> { City.available_collection(name_only: true) }, input_html: { class: "select2" }
-  filter :station_end_id, as: :select, collection: -> { Station.available_collection(name_only: true) }, input_html: { class: "select2" }
+  filter :start_city_id, as: :select, collection: -> { City.available_collection }, input_html: { class: "select2" }
+  filter :station_begin_id, as: :select, collection: -> { Station.available_collection }, input_html: { class: "select2" }
+  filter :end_city_id, as: :select, collection: -> { City.available_collection }, input_html: { class: "select2" }
+  filter :station_end_id, as: :select, collection: -> { Station.available_collection }, input_html: { class: "select2" }
 
   permit_params :start_city_id, :station_begin_id, :end_city_id, :station_end_id,
     :carrier_id
