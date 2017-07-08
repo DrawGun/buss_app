@@ -24,31 +24,23 @@ describe Site::TripsController, :aggregate_failures do
       request_attributes[:filter] = :all
       send_request
 
-      expect(symbolized_json.map { |h| h[:id] }).to include(trip_1.id, trip_2.id, trip_3.id, trip_4.id)
+      expect(symbolized_json.size).to eq(4)
+      expect(index_trip_ids).to include(trip_1.id, trip_2.id, trip_3.id, trip_4.id)
     end
 
     it "with params == monday" do
       request_attributes[:filter] = :monday
       send_request
 
-      expect(symbolized_json.map { |h| h[:id] }).to include(trip_5.id, trip_7.id)
+      expect(symbolized_json.size).to eq(6)
+      expect(index_trip_ids).to include(trip_1.id, trip_2.id, trip_3.id, trip_4.id, trip_5.id, trip_7.id)
     end
 
     it "witout any params" do
       send_request
-      expect(symbolized_json.map { |h| h[:id] }).to include(trip_1.id, trip_2.id, trip_3.id, trip_4.id)
-    end
 
-    it "with page param" do
-      request_attributes[:page] = 1
-      send_request
-      expect(symbolized_json.map { |h| h[:id] }).to include(trip_1.id, trip_2.id, trip_3.id, trip_4.id)
-    end
-
-    it "with page param more one" do
-      request_attributes[:page] = 2
-      send_request
-      expect(symbolized_json.size).to eq(0)
+      expect(symbolized_json.size).to eq(4)
+      expect(index_trip_ids).to include(trip_1.id, trip_2.id, trip_3.id, trip_4.id)
     end
   end
 end
