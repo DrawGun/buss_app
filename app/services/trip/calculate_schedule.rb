@@ -34,6 +34,10 @@ class Trip::CalculateSchedule < ApplicationService
     @_shedule ||= begin
       shedule_obj = {}
 
+      sorted_trip_items = TripItem.sorted_by_start_date.pluck(:start_date)
+      trip_items_from = sorted_trip_items.first.to_date
+      trip_items_to = sorted_trip_items.last.to_date
+
       trip_items_from.upto(trip_items_to) do |day|
         wday = day.wday
         shedule_obj[wday] ||= 0
@@ -42,17 +46,5 @@ class Trip::CalculateSchedule < ApplicationService
 
       shedule_obj
     end
-  end
-
-  def trip_items_start_dates
-    @_trip_items_start_dates ||= TripItem.sorted.map { |ti| ti.start_date.to_date }.uniq.sort
-  end
-
-  def trip_items_from
-    trip_items_start_dates.first
-  end
-
-  def trip_items_to
-    trip_items_start_dates.last
   end
 end
